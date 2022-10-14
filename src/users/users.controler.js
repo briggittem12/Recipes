@@ -20,7 +20,7 @@ const getUserById = async (id) => {
 
 const createUser = async (data) => {
     const newUser = await Users.create({
-        id: uuid.v4,
+        id: uuid.v4(),
         firstName: data.firstName,
         lastName: data.lastName,
         email: data.email,
@@ -54,10 +54,21 @@ const deleteUser = async (id) => {
 }
 
 
+const getUserByEmail = async (email) => {
+    const data = await Users.findOne({
+        where: {
+            email: email
+        }
+    })
+    return data
+}
+
+
 module.exports = {
     getAllUsers,
     getUserById, 
     createUser,
     updateUser,
-    deleteUser
+    deleteUser, 
+    getUserByEmail
 }

@@ -1,4 +1,4 @@
-const db = require('./utils/database')
+const db = require('../utils/database')
 
 const { DataTypes } = require('sequelize')
 
@@ -60,7 +60,7 @@ const Users = db.define("users", {
       allowNull: false,
       field: 'is_verified',
       defaultValue: false
-    },
+    }
   });
 
 module.exports = Users
