@@ -22,7 +22,7 @@ db.sync()
     .then(() => {console.log('Database sync')})
     .catch(err => console.log(err))
 
-/* EJEMPLO MIDELWERE 
+/* EJEMPLO 
 app.use('/',(req, res, next) => {
     if(req.method !== 'GET'){
         console.log('Se esta ejecutando un middleware',req.method)
