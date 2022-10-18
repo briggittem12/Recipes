@@ -89,7 +89,7 @@ const updateMyInfo = (req, res) => {
 
 const deleteMyInfo = (req, res) => {
     const id = req.user.id 
-        usersControllers.deleteUser(id)
+        usersControllers.deleteUser(id, { status: "inactive"})
         .then(data => {
                 res.status(200).json({message: `User delete succesfull `})
         })
@@ -110,3 +110,6 @@ module.exports = {
     updateMyInfo,
     deleteMyInfo
 }
+
+
+

@@ -6,7 +6,7 @@ const db = require('./utils/database')
 const {port} = require('./config')
 const usersRouter = require('./users/users.router')
 const authRouter = require('./auth/auth.routes')
-
+const initModels = require('./models/initModels')
 
 //? Initial configs
 const app = express()
@@ -22,6 +22,7 @@ db.sync()
     .then(() => {console.log('Database sync')})
     .catch(err => console.log(err))
 
+initModels()
 /* EJEMPLO 
 app.use('/',(req, res, next) => {
     if(req.method !== 'GET'){
