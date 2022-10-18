@@ -82,11 +82,7 @@ const updateMyInfo = (req, res) => {
     const { firstName, lastName, phone, gender, country } = req.body 
         usersControllers.updateUser(id, { firstName, lastName, phone, gender, country })
             .then(data => {
-                if(data[0]){
-                    res.status(200).json({message: `User by id: ${id} edited succesfull `})
-                } else {
-                    res.status(404).json({message: 'Invalid ID'})
-                }
+                    res.status(200).json({message: `User edited succesfull `})
             })
             .catch(err => {res.status(400).json({message: err.message})})
 }
@@ -95,11 +91,7 @@ const deleteMyInfo = (req, res) => {
     const id = req.user.id 
         usersControllers.deleteUser(id)
         .then(data => {
-            if(data){
-                res.status(204).json()
-            } else {
-                res.status(404).json({message: 'Invalid ID'})
-            }
+                res.status(200).json({message: `User delete succesfull `})
         })
         .catch(err => res.status(400).json({message: err.message}))
 
