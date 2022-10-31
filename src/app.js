@@ -8,6 +8,7 @@ const usersRouter = require('./users/users.router')
 const authRouter = require('./auth/auth.routes')
 const categorysRouter = require('./categories/categories.router')
 const typesRouter = require('./types/types.router')
+const ingredientsRouter = require('./ingredients/ingredients.router')
 const initModels = require('./models/initModels')
 
 //? Initial configs
@@ -38,6 +39,7 @@ app.use('/api/v1/users', usersRouter)
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/categorys', categorysRouter)
 app.use('/api/v1/types', typesRouter)
+app.use('/api/v1/ingredients', ingredientsRouter)
 
 
 
