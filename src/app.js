@@ -1,6 +1,7 @@
 //? Dependencies
 const express = require('express')
 const db = require('./utils/database')
+const cors = require('cors')
 
 //? files
 const {port} = require('./config')
@@ -9,12 +10,15 @@ const authRouter = require('./auth/auth.routes')
 const categorysRouter = require('./categories/categories.router')
 const typesRouter = require('./types/types.router')
 const ingredientsRouter = require('./ingredients/ingredients.router')
+const recipesRouter = require('./recipes/recipes.router')
 const initModels = require('./models/initModels')
 
 //? Initial configs
 const app = express()
 
 app.use(express.json())
+
+app.use(cors())
 
 db.authenticate()
     .then(() => {console.log('Database Authernticate')})
@@ -37,9 +41,10 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1/users', usersRouter)
 app.use('/api/v1/auth', authRouter)
-app.use('/api/v1/categorys', categorysRouter)
+app.use('/api/v1/categories', categorysRouter)
 app.use('/api/v1/types', typesRouter)
 app.use('/api/v1/ingredients', ingredientsRouter)
+app.use('/api/v1/recipes', recipesRouter)
 
 
 
