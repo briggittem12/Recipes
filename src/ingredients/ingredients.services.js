@@ -68,10 +68,33 @@ const deleteIngredients = (req, res) => {
 }
 
 
+const addIngredientUser = (req, res) => {
+    const userId = req.user.id;
+    const { amount } = req.body;
+    const ingredientId = req.params.ingredient_id
+
+        if(amount) {
+            ingredientsController.addIngredientUser({userId, ingredientId, amount})
+                .then(data => res.status(201).json(data))
+                .catch(err => res.status(400).json({message: err.message}))
+        } else {
+            res.status(400).json({
+                message: 'Missing data',
+                fields: {
+                    amount: 'string'
+                }
+            })
+        }
+}
+
+
+
+
 module.exports = {
     getAllIngredients,
     getIngredientsById,
     createIngredients,
     deleteIngredients,
-    updateIngredients
+    updateIngredients,
+    addIngredientUser
 }
