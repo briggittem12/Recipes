@@ -1,5 +1,7 @@
-const Recipes = require('../models/recipes.models')
 const uuid = require('uuid')
+const { Op } = require('sequelize')
+
+const Recipes = require('../models/recipes.models')
 const Users = require('../models/users.models')
 const Categories = require('../models/categories.models')
 const Instructions = require('../models/intructions.models')
@@ -149,5 +151,6 @@ module.exports = {
     getRecipesById, 
     updateRecipes,
     createRecipes,
-    deleteRecipes
+    deleteRecipes,
+    getMyRecipes
 }

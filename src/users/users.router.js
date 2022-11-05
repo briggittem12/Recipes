@@ -5,10 +5,11 @@ const passport = require('passport')
 
 const userServices = require('./users.services')
 const adminValidate = require('../middlewares/role.middleware')
+const { getMyRecipes } = require('../recipes/recipes.services')
 
 require('../middlewares/auth.middleware')(passport)
 
-//*rutas raiz -> van direcatamente a barra users
+// rutas raiz -> van direcatamente a barra users
 
 router.get('/', 
 passport.authenticate('jwt', {session: false}),
@@ -29,12 +30,16 @@ router.route('/me')
         userServices.deleteMyInfo
     )
 
-//TODO EL REGISTERUSERES IRA EN LA RUTA /auth/resgister
+// ruta para obtner las recetas 
 
-//* rutas dinamicas por id - 
+router.get('/me/my_recipes',
+    passport.authenticate('jwt', {session: false}),
+    getMyRecipes
+)
 
-/** router.get('/:id', userServices.getUsersById ) */ //? manera antigua 
 
+
+// /api/v1/users/:id
 router.route('/:id')
     .get(userServices.getUserById)
     .patch(
